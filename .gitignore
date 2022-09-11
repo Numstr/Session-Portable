@@ -1,0 +1,12 @@
+# Blacklist files/folders in same directory as the .gitignore file
+/*
+
+# Whitelist
+!App/
+App/*
+!App/AppInfo/
+!.editorconfig
+!.gitignore
+!README.md
+!SessionPortable.ini
+!Updater.bat
