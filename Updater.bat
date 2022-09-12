@@ -59,10 +59,12 @@ set SESSION="https://github.com/oxen-io/session-desktop/releases/download/v%VERS
 
 if exist "App\Session" rmdir "App\Session" /s /q
 
-%SZIP% x -aoa TMP\Session_%VERSION%.exe -o"App\Session"
+%SZIP% x -aoa TMP\Session_%VERSION%.exe -o"App\Session" > NUL
 
 ::::::::::::::::::::
 
 rmdir "TMP" /s /q
+
+echo Done
 
 pause
