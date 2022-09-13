@@ -1,10 +1,6 @@
 # Session Portable
 
-Session Desktop Portable based on PortableApps Launcher, with batch file to easy install / update.
-
-## Usage
-
-Run batch file to install / update to latest version.
+[Session Desktop](https://github.com/oxen-io/session-desktop) Portable based on [PortableApps Launcher](https://portableapps.com/apps/development/portableapps.com_launcher), with a batch file for easy install / upgrade.
 
 ## SessionPortable.ini
 
