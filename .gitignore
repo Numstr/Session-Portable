@@ -9,5 +9,6 @@ App/*
 !.editorconfig
 !.gitignore
 !README.md
+!SessionPortable.exe
 !SessionPortable.ini
 !Updater.bat
