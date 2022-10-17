@@ -6,6 +6,7 @@
 App/*
 !App/AppInfo/
 !App/Utils/
+!.github/
 !.editorconfig
 !.gitignore
 !README.md
