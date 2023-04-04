@@ -65,7 +65,7 @@ mkdir "TMP"
 
 set SESSION="https://github.com/oxen-io/session-desktop/releases/download/v%LATEST%/session-desktop-win-%LATEST%.exe"
 
-%CURL% -k -L -# %SESSION% -o TMP\Session_%LATEST%.exe
+%CURL% -k -L %SESSION% -o TMP\Session_%LATEST%.exe
 
 ::::::::::::::::::::
 
