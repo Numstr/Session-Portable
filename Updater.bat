@@ -75,9 +75,18 @@ if exist "App\Session" rmdir "App\Session" /s /q
 
 %SZIP% x -aoa TMP\Session_%LATEST%.exe -o"App\Session" > NUL
 
+rmdir "TMP" /s /q
+
 ::::::::::::::::::::
 
-rmdir "TMP" /s /q
+:::::: APP INFO
+
+%BUSYBOX% sed -i "/Version/d" "%HERE%App\AppInfo\AppInfo.ini"
+echo. >> "App\AppInfo\AppInfo.ini"
+echo [Version] >> "App\AppInfo\AppInfo.ini"
+echo DisplayVersion=%LATEST% >> "App\AppInfo\AppInfo.ini"
+
+::::::::::::::::::::
 
 echo Done
 
