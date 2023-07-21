@@ -23,10 +23,14 @@ if "%ERRORLEVEL%" == "1" (
 
 :::::: VERSION CHECK
 
+if not exist wmic goto LATEST
+
 wmic datafile where name='%HERE_DS%App\\Session\\Session.exe' get version | %BUSYBOX% tail -n2 | %BUSYBOX% cut -c 1-6 > current.txt
 
 for /f %%V in ('more current.txt') do (set CURRENT=%%V)
 echo Current: %CURRENT%
+
+:LATEST
 
 set LATEST_URL="https://github.com/oxen-io/session-desktop/releases/latest"
 
@@ -42,13 +46,15 @@ if "%CURRENT%" == "%LATEST%" (
   echo You Have The Latest Version
   pause
   exit
-) else goto CONTINUE
+) else goto PROCESS
 
 ::::::::::::::::::::
 
-:CONTINUE
+:PROCESS
 
 :::::: RUNNING PROCESS CHECK
+
+if not exist tasklist goto GET
 
 for /f %%P in ('tasklist /NH /FI "IMAGENAME eq Session.exe"') do if %%P == Session.exe (
   echo Close Session To Update
@@ -57,6 +63,8 @@ for /f %%P in ('tasklist /NH /FI "IMAGENAME eq Session.exe"') do if %%P == Sessi
 )
 
 ::::::::::::::::::::
+
+:GET
 
 :::::: GET LATEST VERSION
 
