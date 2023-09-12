@@ -71,7 +71,7 @@ for /f %%P in ('tasklist /NH /FI "IMAGENAME eq Session.exe"') do if %%P == Sessi
 if exist "TMP" rmdir "TMP" /s /q
 mkdir "TMP"
 
-set SESSION="https://github.com/oxen-io/session-desktop/releases/download/v%LATEST%/session-desktop-win-%LATEST%.exe"
+set SESSION="https://github.com/oxen-io/session-desktop/releases/download/v%LATEST%/session-desktop-win-x64-%LATEST%.exe"
 
 %CURL% -k -L %SESSION% -o TMP\Session_%LATEST%.exe
 
