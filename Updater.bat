@@ -23,7 +23,7 @@ if "%ERRORLEVEL%" == "1" (
 
 :::::: VERSION CHECK
 
-if not exist wmic goto LATEST
+if not exist "%WINDIR%\system32\wbem\wmic.exe" goto LATEST
 
 wmic datafile where name='%HERE_DS%App\\Session\\Session.exe' get version | %BUSYBOX% tail -n2 | %BUSYBOX% cut -c 1-6 > current.txt
 
@@ -54,7 +54,7 @@ if "%CURRENT%" == "%LATEST%" (
 
 :::::: RUNNING PROCESS CHECK
 
-if not exist tasklist goto GET
+if not exist "%WINDIR%\system32\tasklist.exe" goto GET
 
 for /f %%P in ('tasklist /NH /FI "IMAGENAME eq Session.exe"') do if %%P == Session.exe (
   echo Close Session To Update
