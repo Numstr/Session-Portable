@@ -37,6 +37,7 @@ set LATEST_URL="https://github.com/oxen-io/session-desktop/releases/latest"
 
 for /f %%V in ('more latest.txt') do (set LATEST=%%V)
 echo Latest: %LATEST%
+echo:
 
 if exist "current.txt" del "current.txt" > NUL
 if exist "latest.txt" del "latest.txt" > NUL
@@ -78,6 +79,9 @@ set SESSION="https://github.com/oxen-io/session-desktop/releases/download/v%LATE
 
 :::::: UNPACKING
 
+echo:
+echo Unpacking
+
 if exist "App\Session" rmdir "App\Session" /s /q
 
 %SZIP% x -aoa TMP\Session_%LATEST%.exe -o"App\Session" > NUL
@@ -95,6 +99,7 @@ echo DisplayVersion=%LATEST% >> "App\AppInfo\AppInfo.ini"
 
 ::::::::::::::::::::
 
+echo:
 echo Done
 
 pause
