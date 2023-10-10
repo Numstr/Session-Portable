@@ -6,12 +6,11 @@ set HERE=%~dp0
 set HERE_DS=%HERE:\=\\%
 
 set BUSYBOX="%HERE%App\Utils\busybox.exe"
-set CURL="%HERE%App\Utils\curl.exe"
 set SZIP="%HERE%App\Utils\7za.exe"
 
 :::::: NETWORK CHECK
 
-%CURL% -I -s www.google.com | %BUSYBOX% grep -q "403"
+%BUSYBOX% wget -q --user-agent="Mozilla" --spider https://google.com
 
 if "%ERRORLEVEL%" == "1" (
   echo Check Your Network Connection
@@ -34,7 +33,7 @@ echo Current: %CURRENT%
 
 set LATEST_URL="https://github.com/oxen-io/session-desktop/releases/latest"
 
-%CURL% -I -k -s %LATEST_URL% | %BUSYBOX% grep -o tag/v[0-9.]\+[0-9] | %BUSYBOX% cut -d "v" -f2 > latest.txt
+%BUSYBOX% wget -q -O - %LATEST_URL% | %BUSYBOX% grep -o tag/v[0-9.]\+[0-9] | %BUSYBOX% cut -d "v" -f2 > latest.txt
 
 for /f %%V in ('more latest.txt') do (set LATEST=%%V)
 echo Latest: %LATEST%
@@ -73,7 +72,7 @@ mkdir "TMP"
 
 set SESSION="https://github.com/oxen-io/session-desktop/releases/download/v%LATEST%/session-desktop-win-x64-%LATEST%.exe"
 
-%CURL% -k -L %SESSION% -o TMP\Session_%LATEST%.exe
+%BUSYBOX% wget %SESSION% -O TMP\Session_%LATEST%.exe
 
 ::::::::::::::::::::
 
